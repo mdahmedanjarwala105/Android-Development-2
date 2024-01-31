@@ -14,4 +14,9 @@
     <string name="favourites_fragment">Favourites Fragment</string>
     <string name="profile_fragment">Profile Fragment</string>
     <string name="about_app_fragment">About App Fragment</string>
+    <string name="list_item">List Item</string>
+    <string name="_4_5">4.5</string>
+    <string name="rs_299">Rs. 299</string>
+    <string name="name_of_the_author">Name of the Author</string>
+    <string name="name_of_the_book">Name of the book</string>
 </resources>

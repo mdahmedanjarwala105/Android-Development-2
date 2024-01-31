@@ -1,4 +1,4 @@
-package com.maabook.maabook
+package com.maabook.maabook.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +11,11 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.maabook.maabook.fragment.AboutAppFragment
+import com.maabook.maabook.fragment.FavouritesFragment
+import com.maabook.maabook.R
+import com.maabook.maabook.fragment.DashboardFragment
+import com.maabook.maabook.fragment.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,7 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         openDashboard()
 
-        val actionBarDrawerToggle = ActionBarDrawerToggle(this@MainActivity, drawerLayout, R.string.open_drawer, R.string.close_drawer)
+        val actionBarDrawerToggle = ActionBarDrawerToggle(this@MainActivity, drawerLayout,
+            R.string.open_drawer,
+            R.string.close_drawer
+        )
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
