@@ -6,20 +6,44 @@
     tools:context=".fragment.DashboardFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/txtDashboard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dashboard_fragment"
-        android:textSize="20sp"
-        android:padding="10dp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/txtDashboard"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/dashboard_fragment"-->
+<!--        android:textSize="20sp"-->
+<!--        android:padding="10dp"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerDashboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtDashboard"
         android:padding="10dp"
         android:layout_margin="5dp"/>
+<!--    android:layout_below="@id/txtDashboard" this code was used above in recycler view-->
 
+<!--    <Button-->
+<!--        android:id="@+id/btnCheckInternet"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@color/orange"-->
+<!--        android:text="@string/check_internet"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="@color/brown"/>-->
+
+    <RelativeLayout
+        android:id="@+id/progressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
 </RelativeLayout>

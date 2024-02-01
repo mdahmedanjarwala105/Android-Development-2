@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.maabook.maabook.R
 import com.maabook.maabook.model.Book
+import com.squareup.picasso.Picasso
 
 class DashboardRecyclerAdapter(private val context: Context, private val itemList: ArrayList<Book>) : RecyclerView.Adapter<DashboardRecyclerAdapter.DashboardViewHolder>(){
     override fun onCreateViewHolder(
@@ -29,9 +30,10 @@ class DashboardRecyclerAdapter(private val context: Context, private val itemLis
         val book = itemList[position]
         holder.txtBookName.text = book.bookName
         holder.txtBookAuthor.text = book.bookAuthor
-        holder.txtBookPrice.text = book.bookCost
+        holder.txtBookPrice.text = book.bookPrice
         holder.txtBookRating.text = book.bookRating
-        holder.txtBookImage.setImageResource(book.bookImage)
+//        holder.imgBookImage.setImageResource(book.bookImage)
+        Picasso.get().load(book.bookImage).error(R.drawable.logo).into(holder.imgBookImage)
 
         holder.llContent.setOnClickListener {
             Toast.makeText(context, "Clicked on ${holder.txtBookName.text}", Toast.LENGTH_SHORT).show()
@@ -47,7 +49,7 @@ class DashboardRecyclerAdapter(private val context: Context, private val itemLis
         val txtBookAuthor: TextView = view.findViewById(R.id.txtBookAuthor)
         val txtBookPrice: TextView = view.findViewById(R.id.txtBookPrice)
         val txtBookRating: TextView = view.findViewById(R.id.txtBookRating)
-        val txtBookImage: ImageView = view.findViewById(R.id.imgBookImage)
+        val imgBookImage: ImageView = view.findViewById(R.id.imgBookImage)
         val llContent: LinearLayout = view.findViewById(R.id.llContent)
     }
 
