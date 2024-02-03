@@ -187,7 +187,7 @@ class DashboardFragment : Fragment() {
             }
             queue.add(jsonObjectRequest)
         } else {
-//            Internet is not available
+//          Internet is not available
             val dialog = AlertDialog.Builder(activity as Context)
             dialog.setTitle("Error")
             dialog.setMessage("Internet Connection is not Found")

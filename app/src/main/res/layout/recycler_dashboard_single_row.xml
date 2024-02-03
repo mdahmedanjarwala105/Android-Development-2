@@ -85,9 +85,7 @@
             android:drawablePadding="4dp"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:drawableLeftCompat="@drawable/ic_ratings">
-
-        </TextView>
+            app:drawableLeftCompat="@drawable/ic_ratings"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -1,6 +1,7 @@
 package com.maabook.maabook.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.maabook.maabook.R
+import com.maabook.maabook.activity.DescriptionActivity
 import com.maabook.maabook.model.Book
 import com.squareup.picasso.Picasso
 
@@ -32,11 +34,13 @@ class DashboardRecyclerAdapter(private val context: Context, private val itemLis
         holder.txtBookAuthor.text = book.bookAuthor
         holder.txtBookPrice.text = book.bookPrice
         holder.txtBookRating.text = book.bookRating
-//        holder.imgBookImage.setImageResource(book.bookImage)
+//      holder.imgBookImage.setImageResource(book.bookImage)
         Picasso.get().load(book.bookImage).error(R.drawable.logo).into(holder.imgBookImage)
 
         holder.llContent.setOnClickListener {
-            Toast.makeText(context, "Clicked on ${holder.txtBookName.text}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, DescriptionActivity::class.java)
+            intent.putExtra("book_id", book.bookId)
+            context.startActivity(intent)
         }
     }
 

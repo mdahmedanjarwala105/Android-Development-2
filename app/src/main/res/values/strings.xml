@@ -20,4 +20,6 @@
     <string name="name_of_the_author">Name of the Author</string>
     <string name="name_of_the_book">Name of the book</string>
     <string name="check_internet">Check Internet</string>
+    <string name="about_the_book">About the book:</string>
+    <string name="add_to_favourite">Add To Favourite</string>
 </resources>
