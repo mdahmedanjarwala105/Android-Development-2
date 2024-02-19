@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="140dp"
-    android:background="#ffffff"
+    android:background="@color/white"
     android:layout_margin="6dp"
     app:cardCornerRadius="4dp">
 
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:orientation="horizontal"
-        android:background="#ffffff"
+        android:background="@color/white"
         android:weightSum="6">
 
         <!--The weight sum property is used to divide the layout into
@@ -45,7 +45,7 @@
                 android:text="@string/name_of_the_book"
                 android:padding="8dp"
                 android:textSize="18sp"
-                android:textColor="#000000"/>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/txtBookAuthor"
@@ -66,7 +66,7 @@
                 android:layout_below="@id/txtBookAuthor"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:textColor="#357a38"/>
+                android:textColor="@color/dark_green"/>
         </RelativeLayout>
 
 
@@ -80,7 +80,7 @@
             android:layout_width="0dp"
             android:padding="4dp"
             android:layout_height="wrap_content"
-            android:textColor="#ffca28"
+            android:textColor="@color/yellow"
             android:text="@string/_4_5"
             android:drawablePadding="4dp"
             android:textSize="15sp"

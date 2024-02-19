@@ -22,4 +22,9 @@
     <string name="check_internet">Check Internet</string>
     <string name="about_the_book">About the book:</string>
     <string name="add_to_favourite">Add To Favourite</string>
+    <string name="remove_from_favourites">Remove from favourites</string>
+    <string name="book_added_to_favourites">Book added to favourites</string>
+    <string name="hello_world">Hello World</string>
+    <string name="android_inc">Android Inc.</string>
+    <string name="rs_499">Rs. 499</string>
 </resources>

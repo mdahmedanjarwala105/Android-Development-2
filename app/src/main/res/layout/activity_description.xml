@@ -138,9 +138,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/orange"
+        android:background="@color/brown"
         android:text="@string/add_to_favourite"
-        android:textColor="@color/brown"
+        android:textColor="@color/orange"
         android:textSize="19sp"
         android:textStyle="bold"/>
 

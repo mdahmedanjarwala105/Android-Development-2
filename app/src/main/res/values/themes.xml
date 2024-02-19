@@ -8,6 +8,7 @@
     <style name="Theme.MAABOOK" parent="Base.Theme.MAABOOK" />
 
     <style name="MAA" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brown</item>
         <item name="colorPrimaryDark">@color/brown</item>
     </style>
 
