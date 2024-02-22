@@ -151,15 +151,11 @@ class DescriptionActivity : AppCompatActivity() {
                                     val result = async.get()
 
                                     if (result){
-                                        Toast.makeText(
-                                            this@DescriptionActivity,
-                                            getString(R.string.book_added_to_favourites),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        Toast.makeText(this@DescriptionActivity,
+                                            getString(R.string.book_removed_from_favourites), Toast.LENGTH_SHORT).show()
 
                                         btnAddToFav.text = getString(R.string.add_to_favourite)
-                                        val noFavColor =
-                                            ContextCompat.getColor(applicationContext, R.color.brown)
+                                        val noFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
                                         btnAddToFav.setBackgroundColor(noFavColor)
                                     } else {
                                         Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
@@ -222,9 +218,9 @@ class DescriptionActivity : AppCompatActivity() {
                 1 -> {
 
 //                  Check DB if the book is favourite or not
-                    val book: BookEntity = db.bookDao().getBookById(bookEntity.book_id.toString())
+                    val book: BookEntity? = db.bookDao().getBookById(bookEntity.book_id.toString())
                     db.close()
-                    return true
+                    return book != null
 
                 }
 

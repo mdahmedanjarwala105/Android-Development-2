@@ -27,4 +27,5 @@
     <string name="hello_world">Hello World</string>
     <string name="android_inc">Android Inc.</string>
     <string name="rs_499">Rs. 499</string>
+    <string name="book_removed_from_favourites">Book Removed From Favourites</string>
 </resources>
