@@ -123,46 +123,27 @@ class DescriptionActivity : AppCompatActivity() {
 
                             if (isFav) {
                                 btnAddToFav.text = getString(R.string.remove_from_favourites)
-                                val favColor = ContextCompat.getColor(
-                                    applicationContext,
-                                    R.color.orange
-                                )
+                                val favColor = ContextCompat.getColor(applicationContext, R.color.orange)
                                 btnAddToFav.setBackgroundColor(favColor)
                             } else {
                                 btnAddToFav.text = getString(R.string.add_to_favourite)
-                                val noFavColor =
-                                    ContextCompat.getColor(applicationContext, R.color.brown)
+                                val noFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
                                 btnAddToFav.setBackgroundColor(noFavColor)
                             }
 
                             btnAddToFav.setOnClickListener {
 
-                                if (!DBAsyncTask(
-                                        applicationContext,
-                                        bookEntity,
-                                        1
-                                    ).execute().get()
-                                ) {
-
-                                    val async =
-                                        DBAsyncTask(applicationContext, bookEntity, 2).execute()
+                                if (!DBAsyncTask(applicationContext, bookEntity, 1).execute().get()) {
+                                    val async = DBAsyncTask(applicationContext, bookEntity, 2).execute()
                                     val result = async.get()
                                     if (result) {
-                                        Toast.makeText(
-                                            this@DescriptionActivity,
-                                            getString(R.string.book_added_to_favourites),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        Toast.makeText(this@DescriptionActivity, getString(R.string.book_added_to_favourites), Toast.LENGTH_SHORT).show()
 
                                         btnAddToFav.text = getString(R.string.remove_from_favourites)
                                         val favColor = ContextCompat.getColor(applicationContext, R.color.orange)
                                         btnAddToFav.setBackgroundColor(favColor)
                                     } else {
-                                        Toast.makeText(
-                                            this@DescriptionActivity,
-                                            "Some error occurred!",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
                                     }
                                 } else {
 
@@ -195,7 +176,6 @@ class DescriptionActivity : AppCompatActivity() {
                     }
 
                 }, Response.ErrorListener {
-
                     Toast.makeText(this@DescriptionActivity, "Volley Error $it", Toast.LENGTH_SHORT).show()
                 }) {
                     override fun getHeaders(): MutableMap<String, String> {
@@ -224,7 +204,7 @@ class DescriptionActivity : AppCompatActivity() {
             dialog.show()
         }
     }
-    class DBAsyncTask(val context: Context, val bookEntity: BookEntity, val mode: Int) : AsyncTask<Void, Void, Boolean>() {
+    class DBAsyncTask(val context: Context, private val bookEntity: BookEntity, private val mode: Int) : AsyncTask<Void, Void, Boolean>() {
 
         /*
         Mode 1 -> Check DB if the book is favourite or not
@@ -242,9 +222,9 @@ class DescriptionActivity : AppCompatActivity() {
                 1 -> {
 
 //                  Check DB if the book is favourite or not
-                    val book: BookEntity? = db.bookDao().getBookById(bookEntity.book_id.toString())
+                    val book: BookEntity = db.bookDao().getBookById(bookEntity.book_id.toString())
                     db.close()
-                    return book != null
+                    return true
 
                 }
 

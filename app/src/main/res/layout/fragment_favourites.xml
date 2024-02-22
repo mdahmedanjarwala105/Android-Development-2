@@ -3,15 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.FavouritesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/txtFavourites"
-        android:layout_width="wrap_content"
+<!--    <TextView-->
+<!--        android:id="@+id/txtFavourites"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/favourites_fragment"-->
+<!--        android:textSize="20sp"-->
+<!--        android:padding="10dp"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerFavourite"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/favourites_fragment"
-        android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:layout_margin="5dp"/>
+
+    <RelativeLayout
+        android:id="@+id/progressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/orange">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:cardCornerRadius="24dp"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:id="@+id/imgLogo"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/logo"
+                android:src="@drawable/logo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgLogo"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:indeterminate="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:indeterminateTint="@color/brown"/>
+
+    </RelativeLayout>
 
 </FrameLayout>

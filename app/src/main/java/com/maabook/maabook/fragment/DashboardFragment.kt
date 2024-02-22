@@ -169,14 +169,19 @@ class DashboardFragment : Fragment() {
 //                            )
                         }
                     } else {
-                        Toast.makeText(activity as Context, "Some Error Occurred!!", Toast.LENGTH_SHORT).show()
+                        if (activity != null) {
+                            Toast.makeText(activity as Context, "Some Error Occurred!!", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 } catch (e: JSONException) {
-                    Toast.makeText(activity as Context, "Some Unexpected Error Found!!!", Toast.LENGTH_SHORT).show()
+                    if (activity != null) {
+                        Toast.makeText(activity as Context, "Some Unexpected Error Found!!!", Toast.LENGTH_SHORT).show()
+                    }
                 }
-
             }, Response.ErrorListener{
-                Toast.makeText(activity as Context, "Volley Error Occurred", Toast.LENGTH_SHORT).show()
+                if(activity != null) {
+                    Toast.makeText(activity as Context, "Volley Error Occurred", Toast.LENGTH_SHORT).show()
+                }
             }) {
                 override fun getHeaders(): MutableMap<String, String> {
                     val headers = HashMap<String, String> ()

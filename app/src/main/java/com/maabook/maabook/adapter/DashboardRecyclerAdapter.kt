@@ -15,20 +15,14 @@ import com.maabook.maabook.activity.DescriptionActivity
 import com.maabook.maabook.model.Book
 import com.squareup.picasso.Picasso
 
-class DashboardRecyclerAdapter(private val context: Context, private val itemList: ArrayList<Book>) : RecyclerView.Adapter<DashboardRecyclerAdapter.DashboardViewHolder>(){
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): DashboardViewHolder {
+class DashboardRecyclerAdapter(private val context: Context, private val itemList: ArrayList<Book>) : RecyclerView.Adapter<DashboardRecyclerAdapter.DashboardViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_dashboard_single_row, parent, false)
 
         return DashboardViewHolder(view)
     }
 
-    override fun onBindViewHolder(
-        holder: DashboardViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: DashboardViewHolder, position: Int) {
         val book = itemList[position]
         holder.txtBookName.text = book.bookName
         holder.txtBookAuthor.text = book.bookAuthor
