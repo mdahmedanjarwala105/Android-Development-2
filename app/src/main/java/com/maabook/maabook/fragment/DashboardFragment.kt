@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
@@ -26,6 +29,9 @@ import com.maabook.maabook.adapter.DashboardRecyclerAdapter
 import com.maabook.maabook.model.Book
 import com.maabook.maabook.util.ConnectionManager
 import org.json.JSONException
+import java.util.Collections
+import java.util.Comparator
+
 //import android.widget.Button
 
 // TODO: Rename parameter arguments, choose names that match
@@ -70,6 +76,14 @@ class DashboardFragment : Fragment() {
 //        Book("The Lord of the Rings", "J.R.R Tolkien", "Rs. 749", "5.0", R.drawable.lord_of_rings)
     )
 
+    private var ratingComparator = Comparator<Book> { book1, book2 ->
+        if (book1.bookRating.compareTo(book2.bookRating, true) == 0) {
+            book1.bookName.compareTo(book2.bookName, true)
+        } else {
+            book1.bookRating.compareTo(book2.bookRating, true)
+        }
+    }
+
     private lateinit var recyclerAdapter: DashboardRecyclerAdapter
 
     private lateinit var progressLayout: RelativeLayout
@@ -82,6 +96,8 @@ class DashboardFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+
+        setHasOptionsMenu(true)
 
         recyclerDashboard = view.findViewById(R.id.recyclerDashboard)
 
@@ -208,6 +224,23 @@ class DashboardFragment : Fragment() {
             dialog.show()
         }
         return view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_dashboard, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        if (id == R.id.action_sort) {
+            Collections.sort(bookInfoList, ratingComparator)
+            bookInfoList.reverse()
+        }
+
+        recyclerAdapter.notifyDataSetChanged()
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

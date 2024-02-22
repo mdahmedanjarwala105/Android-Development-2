@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="0dp"
-            android:theme="@style/MAA">
+            android:theme="@style/Base.Theme.MAABOOK">
 
            <androidx.appcompat.widget.Toolbar
                android:id="@+id/toolbar"
