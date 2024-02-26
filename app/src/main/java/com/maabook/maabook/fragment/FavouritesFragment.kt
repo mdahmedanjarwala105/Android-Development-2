@@ -48,7 +48,7 @@ class FavouritesFragment : Fragment() {
     private lateinit var progressBar: ProgressBar
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var recyclerAdapter: FavouriteRecyclerAdapter
-    var dbBookList = listOf<BookEntity>()
+    private var dbBookList = listOf<BookEntity>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

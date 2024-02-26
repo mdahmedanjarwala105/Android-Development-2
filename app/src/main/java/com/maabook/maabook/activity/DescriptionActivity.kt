@@ -89,16 +89,12 @@ class DescriptionActivity : AppCompatActivity() {
 
 
         if (ConnectionManager().checkConnectivity(this@DescriptionActivity)) {
-            val jsonRequest =
-                object : JsonObjectRequest(Request.Method.POST, url, jsonParams, Response.Listener {
-
-                    try {
-
-                        val success = it.getBoolean("success")
-                        if (success) {
-                            val bookJsonObject = it.getJSONObject("book_data")
-                            progressLayout.visibility = View.GONE
-
+            val jsonRequest = object : JsonObjectRequest(Request.Method.POST, url, jsonParams, Response.Listener {
+                try {
+                    val success = it.getBoolean("success")
+                    if (success) {
+                        val bookJsonObject = it.getJSONObject("book_data")
+                        progressLayout.visibility = View.GONE
                             val bookImageUrl = bookJsonObject.getString("image")
                             Picasso.get().load(bookJsonObject.getString("image"))
                                 .error(R.drawable.logo).into(imgBookImage)
@@ -162,7 +158,6 @@ class DescriptionActivity : AppCompatActivity() {
                                     }
                                 }
                             }
-
                         } else {
                             Toast.makeText(this@DescriptionActivity, "Some Error Occurred!", Toast.LENGTH_SHORT).show()
                         }
