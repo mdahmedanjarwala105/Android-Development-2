@@ -19,7 +19,9 @@
         tools:targetApi="31">
         <activity
             android:name=".activity.FavouritesDescActivity"
-            android:exported="false" />
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DescriptionActivity"
             android:configChanges="orientation|screenSize"
@@ -28,8 +30,13 @@
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SplashScreen"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

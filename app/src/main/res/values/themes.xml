@@ -7,10 +7,10 @@
 
     <style name="Theme.MAABOOK" parent="Base.Theme.MAABOOK" />
 
-    <style name="MAA" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/brown</item>
+    <style name="MAA" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryDark">@color/brown</item>
-        <item name="colorAccent">@color/brown</item>
+        <item name="titleTextColor">@color/brown</item>
     </style>
 
 </resources>
