@@ -95,87 +95,87 @@ class DescriptionActivity : AppCompatActivity() {
                     if (success) {
                         val bookJsonObject = it.getJSONObject("book_data")
                         progressLayout.visibility = View.GONE
-                            val bookImageUrl = bookJsonObject.getString("image")
-                            Picasso.get().load(bookJsonObject.getString("image"))
-                                .error(R.drawable.logo).into(imgBookImage)
-                            txtBookName.text = bookJsonObject.getString("name")
-                            txtBookAuthor.text = bookJsonObject.getString("author")
-                            txtBookPrice.text = bookJsonObject.getString("price")
-                            txtBookRating.text = bookJsonObject.getString("rating")
-                            txtBookDesc.text = bookJsonObject.getString("description")
+                        val bookImageUrl = bookJsonObject.getString("image")
+                        Picasso.get().load(bookJsonObject.getString("image"))
+                            .error(R.drawable.logo).into(imgBookImage)
+                        txtBookName.text = bookJsonObject.getString("name")
+                        txtBookAuthor.text = bookJsonObject.getString("author")
+                        txtBookPrice.text = bookJsonObject.getString("price")
+                        txtBookRating.text = bookJsonObject.getString("rating")
+                        txtBookDesc.text = bookJsonObject.getString("description")
 
-                            val bookEntity = BookEntity(
-                                bookId?.toInt() as Int,
-                                txtBookName.text.toString(),
-                                txtBookAuthor.text.toString(),
-                                txtBookPrice.text.toString(),
-                                txtBookRating.text.toString(),
-                                txtBookDesc.text.toString(),
-                                bookImageUrl
-                            )
+                        val bookEntity = BookEntity(
+                            bookId?.toInt() as Int,
+                            txtBookName.text.toString(),
+                            txtBookAuthor.text.toString(),
+                            txtBookPrice.text.toString(),
+                            txtBookRating.text.toString(),
+                            txtBookDesc.text.toString(),
+                            bookImageUrl
+                        )
 
-                            val checkFav = DBAsyncTask(applicationContext, bookEntity, 1).execute()
-                            val isFav = checkFav.get()
+                        val checkFav = DBAsyncTask(applicationContext, bookEntity, 1).execute()
+                        val isFav = checkFav.get()
 
-                            if (isFav) {
-                                btnAddToFav.text = getString(R.string.remove_from_favourites)
-                                val favColor = ContextCompat.getColor(applicationContext, R.color.orange)
-                                btnAddToFav.setBackgroundColor(favColor)
-                            } else {
-                                btnAddToFav.text = getString(R.string.add_to_favourite)
-                                val noFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
-                                btnAddToFav.setBackgroundColor(noFavColor)
-                            }
-
-                            btnAddToFav.setOnClickListener {
-
-                                if (!DBAsyncTask(applicationContext, bookEntity, 1).execute().get()) {
-                                    val async = DBAsyncTask(applicationContext, bookEntity, 2).execute()
-                                    val result = async.get()
-                                    if (result) {
-                                        Toast.makeText(this@DescriptionActivity, getString(R.string.book_added_to_favourites), Toast.LENGTH_SHORT).show()
-
-                                        btnAddToFav.text = getString(R.string.remove_from_favourites)
-                                        val favColor = ContextCompat.getColor(applicationContext, R.color.orange)
-                                        btnAddToFav.setBackgroundColor(favColor)
-                                    } else {
-                                        Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
-                                    }
-                                } else {
-
-                                    val async = DBAsyncTask(applicationContext, bookEntity, 3).execute()
-                                    val result = async.get()
-
-                                    if (result){
-                                        Toast.makeText(this@DescriptionActivity,
-                                            getString(R.string.book_removed_from_favourites), Toast.LENGTH_SHORT).show()
-
-                                        btnAddToFav.text = getString(R.string.add_to_favourite)
-                                        val noFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
-                                        btnAddToFav.setBackgroundColor(noFavColor)
-                                    } else {
-                                        Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                            }
+                        if (isFav) {
+                            btnAddToFav.text = getString(R.string.remove_from_favourites)
+                            val favColor = ContextCompat.getColor(applicationContext, R.color.orange)
+                            btnAddToFav.setBackgroundColor(favColor)
                         } else {
-                            Toast.makeText(this@DescriptionActivity, "Some Error Occurred!", Toast.LENGTH_SHORT).show()
+                            btnAddToFav.text = getString(R.string.add_to_favourite)
+                            val noFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
+                            btnAddToFav.setBackgroundColor(noFavColor)
                         }
 
-                    } catch (e: Exception) {
-                        Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
+                        btnAddToFav.setOnClickListener {
+
+                            if (!DBAsyncTask(applicationContext, bookEntity, 1).execute().get()) {
+                                val async = DBAsyncTask(applicationContext, bookEntity, 2).execute()
+                                val result = async.get()
+                                if (result) {
+                                    Toast.makeText(this@DescriptionActivity, getString(R.string.book_added_to_favourites), Toast.LENGTH_SHORT).show()
+
+                                    btnAddToFav.text = getString(R.string.remove_from_favourites)
+                                    val favColor = ContextCompat.getColor(applicationContext, R.color.orange)
+                                    btnAddToFav.setBackgroundColor(favColor)
+                                } else {
+                                    Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
+                                }
+                            } else {
+
+                                val async = DBAsyncTask(applicationContext, bookEntity, 3).execute()
+                                val result = async.get()
+
+                                if (result){
+                                    Toast.makeText(this@DescriptionActivity,
+                                        getString(R.string.book_removed_from_favourites), Toast.LENGTH_SHORT).show()
+
+                                    btnAddToFav.text = getString(R.string.add_to_favourite)
+                                    val noFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
+                                    btnAddToFav.setBackgroundColor(noFavColor)
+                                } else {
+                                    Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    } else {
+                        Toast.makeText(this@DescriptionActivity, "Some Error Occurred!", Toast.LENGTH_SHORT).show()
                     }
 
-                }, Response.ErrorListener {
-                    Toast.makeText(this@DescriptionActivity, "Volley Error $it", Toast.LENGTH_SHORT).show()
-                }) {
-                    override fun getHeaders(): MutableMap<String, String> {
-                        val headers = HashMap<String, String>()
-                        headers["Content-type"] = "application/json"
-                        headers["token"] = "1becfbd50ebb54"
-                        return headers
-                    }
+                } catch (e: Exception) {
+                    Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
                 }
+
+            }, Response.ErrorListener {
+                Toast.makeText(this@DescriptionActivity, "Volley Error $it", Toast.LENGTH_SHORT).show()
+            }) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val headers = HashMap<String, String>()
+                    headers["Content-type"] = "application/json"
+                    headers["token"] = "1becfbd50ebb54"
+                    return headers
+                }
+            }
 
             queue.add(jsonRequest)
         } else {
