@@ -1,14 +1,9 @@
 package com.maabook.maabook.activity
 
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -30,19 +25,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var frameLayout: FrameLayout
     private lateinit var navigationView: NavigationView
     private var previousMenuItem: MenuItem? = null
-    private lateinit var btn_delete_account: Button
-    private lateinit var btn_log_out: Button
-    private lateinit var sharedPreferences: SharedPreferences
-
-    var name: String? = "name"
-    var email: String? = "email"
-    var mobileNum: String? = "mobileNum"
-    var password: String? = "password"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        sharedPreferences = getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
 
         setContentView(R.layout.activity_main)
 
@@ -51,13 +37,6 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         frameLayout = findViewById(R.id.frame)
         navigationView = findViewById(R.id.navigationView)
-        btn_delete_account = findViewById(R.id.btn_delete_account)
-        btn_log_out = findViewById(R.id.btn_log_out)
-
-        name = sharedPreferences.getString("name", name.toString())
-        email = sharedPreferences.getString("email", email.toString())
-        mobileNum = sharedPreferences.getString("mobileNumber", mobileNum.toString())
-        password = sharedPreferences.getString("password", password.toString())
 
         setUpToolbar()
 
@@ -109,35 +88,6 @@ class MainActivity : AppCompatActivity() {
             }
             return@setNavigationItemSelectedListener true
         }
-
-        btn_log_out.setOnClickListener{
-            clearSharedPreference()
-
-            Toast.makeText(this@MainActivity, "Logging Out", Toast.LENGTH_SHORT).show()
-
-            val intent = Intent(this@MainActivity, LoginActivity::class.java)
-            intent.putExtra("name", name.toString())
-            intent.putExtra("email", email.toString())
-            intent.putExtra("mobileNum", mobileNum.toString())
-            intent.putExtra("password", password.toString())
-            startActivity(intent)
-            finish()
-        }
-
-        btn_delete_account.setOnClickListener{
-            clearSharedPreference()
-
-            Toast.makeText(this@MainActivity, "Account Deleted", Toast.LENGTH_SHORT).show()
-
-            val intent = Intent(this@MainActivity, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-    }
-
-    private fun clearSharedPreference() {
-        sharedPreferences.edit().clear().apply()
     }
 
     private fun setUpToolbar() {

@@ -1,11 +1,16 @@
 package com.maabook.maabook.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import com.maabook.maabook.R
+import com.maabook.maabook.activity.LoginActivity
+import com.maabook.maabook.activity.MainActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +27,8 @@ class AboutAppFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var btnHome: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,6 +43,16 @@ class AboutAppFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_about_app, container, false)
+
+        btnHome = view.findViewById(R.id.btnHome)
+
+        btnHome.setOnClickListener{
+            Toast.makeText(requireContext(), "HOME", Toast.LENGTH_SHORT).show()
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
+
         return view
     }
 

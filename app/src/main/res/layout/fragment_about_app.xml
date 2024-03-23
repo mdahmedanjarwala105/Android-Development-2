@@ -3,10 +3,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/orange"
     tools:context=".fragment.AboutAppFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        app:cardCornerRadius="24dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:elevation="10dp"
+        android:layout_gravity="top|center">
 
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo" />
 
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/brown"
+            android:text="@string/about_app_title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="150dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/brown"
+            android:text="@string/about_app_subtitle"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="25dp"
+            android:layout_marginHorizontal="15dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/brown"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="90dp"
+        android:layout_marginHorizontal="35dp"
+        android:text="@string/home"
+        android:textColor="@color/orange"
+        android:textSize="20sp"/>
 
 </FrameLayout>

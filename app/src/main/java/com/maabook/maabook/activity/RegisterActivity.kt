@@ -22,6 +22,11 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var btn_register: Button
     private lateinit var toolbar: Toolbar
 
+    var valName: String? = "name"
+    var valEmail: String? = "email@gmail.com"
+    var valMobileNum: String? = "0987654321"
+    var valPassword: String? = "password"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -32,6 +37,13 @@ class RegisterActivity : AppCompatActivity() {
         et_password1 = findViewById(R.id.et_password1)
         et_password2 = findViewById(R.id.et_password2)
         btn_register = findViewById(R.id.btn_register)
+
+        if (intent != null) {
+            valName = intent.getStringExtra("name")
+            valEmail = intent.getStringExtra("email")
+            valMobileNum = intent.getStringExtra("mobileNum")
+            valPassword = intent.getStringExtra("password")
+        }
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -59,7 +71,12 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+
         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+        intent.putExtra("name", valName)
+        intent.putExtra("email", valEmail)
+        intent.putExtra("mobileNum", valMobileNum)
+        intent.putExtra("password", valPassword)
         startActivity(intent)
         finish()
     }
