@@ -121,10 +121,14 @@ class DescriptionActivity : AppCompatActivity() {
                             btnAddToFav.text = getString(R.string.remove_from_favourites)
                             val favColor = ContextCompat.getColor(applicationContext, R.color.orange)
                             btnAddToFav.setBackgroundColor(favColor)
+                            val textFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
+                            btnAddToFav.setTextColor(textFavColor)
                         } else {
                             btnAddToFav.text = getString(R.string.add_to_favourite)
                             val noFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
                             btnAddToFav.setBackgroundColor(noFavColor)
+                            val textFavColor = ContextCompat.getColor(applicationContext, R.color.orange)
+                            btnAddToFav.setTextColor(textFavColor)
                         }
 
                         btnAddToFav.setOnClickListener {
@@ -138,6 +142,8 @@ class DescriptionActivity : AppCompatActivity() {
                                     btnAddToFav.text = getString(R.string.remove_from_favourites)
                                     val favColor = ContextCompat.getColor(applicationContext, R.color.orange)
                                     btnAddToFav.setBackgroundColor(favColor)
+                                    val textFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
+                                    btnAddToFav.setTextColor(textFavColor)
                                 } else {
                                     Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
                                 }
@@ -153,6 +159,8 @@ class DescriptionActivity : AppCompatActivity() {
                                     btnAddToFav.text = getString(R.string.add_to_favourite)
                                     val noFavColor = ContextCompat.getColor(applicationContext, R.color.brown)
                                     btnAddToFav.setBackgroundColor(noFavColor)
+                                    val textFavColor = ContextCompat.getColor(applicationContext, R.color.orange)
+                                    btnAddToFav.setTextColor(textFavColor)
                                 } else {
                                     Toast.makeText(this@DescriptionActivity, "Some error occurred!", Toast.LENGTH_SHORT).show()
                                 }
